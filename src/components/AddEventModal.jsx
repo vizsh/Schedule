@@ -62,14 +62,14 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-zinc-950/40 backdrop-blur-xs"
+          className="fixed inset-0 bg-zinc-950/40 backdrop-blur-xs"
         />
 
         {/* Modal Window */}
@@ -78,10 +78,10 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.18 }}
-          className="relative w-full max-w-lg bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden z-10"
+          className="relative w-full max-w-lg max-h-[92vh] flex flex-col bg-white border border-zinc-200 rounded-xl shadow-2xl overflow-hidden z-10 my-auto"
         >
           {/* Header */}
-          <div className="p-5 border-b border-zinc-100 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-zinc-100 flex items-center justify-between shrink-0">
             <div>
               <h3 className="font-semibold text-zinc-900 text-sm tracking-tight">
                 Add Hackathon to Schedule
@@ -99,7 +99,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="p-5 space-y-4">
+          <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3.5 sm:space-y-4 overflow-y-auto flex-1">
             <div>
               <label className="block text-xs font-medium text-zinc-700 mb-1">
                 Hackathon Name *
@@ -110,11 +110,11 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                 placeholder="e.g. Smart India Hackathon 2026"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
                   Organizer / Host
@@ -124,7 +124,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                   placeholder="e.g. Softlink / IIT Bombay"
                   value={formData.organizer}
                   onChange={(e) => setFormData({ ...formData, organizer: e.target.value })}
-                  className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 />
               </div>
 
@@ -135,7 +135,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                 <select
                   value={formData.platform}
                   onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
-                  className="w-full h-8 px-2 text-xs bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-2 text-sm bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 >
                   <option value="Unstop">Unstop</option>
                   <option value="Hack2skill">Hack2skill</option>
@@ -148,7 +148,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
                   Prize Pool
@@ -158,7 +158,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                   placeholder="e.g. ₹5,00,000"
                   value={formData.prizePool}
                   onChange={(e) => setFormData({ ...formData, prizePool: e.target.value })}
-                  className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 />
               </div>
 
@@ -172,12 +172,12 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                   onChange={(e) =>
                     setFormData({ ...formData, nextDeadline: `${e.target.value}:00+05:30` })
                   }
-                  className="w-full h-8 px-2 text-xs bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-2 text-sm bg-zinc-50 border border-zinc-200 rounded-lg text-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
                   Finale Venue
@@ -187,7 +187,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                   placeholder="e.g. Mumbai / Bangalore / Online"
                   value={formData.finaleVenue}
                   onChange={(e) => setFormData({ ...formData, finaleVenue: e.target.value })}
-                  className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                   placeholder="e.g. 127114"
                   value={formData.registrationId}
                   onChange={(e) => setFormData({ ...formData, registrationId: e.target.value })}
-                  className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                  className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
                 />
               </div>
             </div>
@@ -214,22 +214,22 @@ export default function AddEventModal({ isOpen, onClose, onAddHackathon }) {
                 placeholder="https://..."
                 value={formData.url}
                 onChange={(e) => setFormData({ ...formData, url: e.target.value })}
-                className="w-full h-8 px-3 text-xs bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
+                className="w-full h-9 px-3 text-sm bg-zinc-50 border border-zinc-200 rounded-lg placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 focus:bg-white transition"
               />
             </div>
 
             {/* Footer Buttons */}
-            <div className="pt-2 flex items-center justify-end gap-2">
+            <div className="pt-2 flex items-center justify-end gap-2 shrink-0">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-3 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg transition cursor-pointer"
+                className="px-3 py-2 text-xs font-medium text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg transition cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-3.5 py-1.5 text-xs font-medium text-white bg-zinc-900 hover:bg-zinc-800 rounded-lg transition shadow-xs cursor-pointer"
+                className="px-4 py-2 text-xs font-medium text-white bg-zinc-900 hover:bg-zinc-800 rounded-lg transition shadow-xs cursor-pointer"
               >
                 Add to Schedule
               </button>

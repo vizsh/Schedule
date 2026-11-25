@@ -63,11 +63,11 @@ export default function ConflictsView({ onSelectHackathon }) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Intro Header */}
-      <div className="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs">
+      <div className="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs">
         <div className="flex items-center gap-2 mb-1">
-          <ShieldAlert className="w-4 h-4 text-zinc-700" />
+          <ShieldAlert className="w-4 h-4 text-zinc-700 shrink-0" />
           <h3 className="text-sm font-semibold text-zinc-900 tracking-tight">
             Schedule Conflict Radar & Team Allocation
           </h3>
@@ -78,29 +78,29 @@ export default function ConflictsView({ onSelectHackathon }) {
       </div>
 
       {/* Conflict Cards */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {conflicts.map((c) => (
           <div
             key={c.id}
-            className="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs space-y-3"
+            className="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs space-y-3"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-zinc-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 pb-2.5 sm:pb-3 border-b border-zinc-100">
               <div>
-                <div className="flex items-center gap-2">
-                  <span className={`text-[10px] font-mono font-medium px-2 py-0.5 rounded border ${c.badgeColor}`}>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`text-[10px] font-mono font-medium px-2 py-0.5 rounded border ${c.badgeColor} shrink-0`}>
                     {c.severity} Priority
                   </span>
                   <span className="text-xs font-semibold text-zinc-900">
                     {c.title}
                   </span>
                 </div>
-                <span className="text-xs text-zinc-500 font-mono mt-1 block">
+                <span className="text-xs text-zinc-500 font-mono mt-0.5 block">
                   {c.date}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-zinc-600 leading-relaxed">
+            <p className="text-xs text-zinc-600 leading-relaxed break-words">
               {c.description}
             </p>
 
@@ -111,20 +111,20 @@ export default function ConflictsView({ onSelectHackathon }) {
               </span>
               <ul className="space-y-1 text-xs text-zinc-700">
                 {c.impactedEvents.map((evt, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-zinc-400" />
-                    <span>{evt}</span>
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-1 h-1 rounded-full bg-zinc-400 mt-1.5 shrink-0" />
+                    <span className="break-words">{evt}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Tactical Strategy */}
-            <div className="flex items-start gap-2 p-3 rounded-lg bg-zinc-900 text-zinc-100 text-xs">
+            <div className="flex items-start gap-2 p-2.5 sm:p-3 rounded-lg bg-zinc-900 text-zinc-100 text-xs">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-white">Recommended Strategy: </span>
-                <span className="text-zinc-300">{c.recommendation}</span>
+                <span className="text-zinc-300 break-words">{c.recommendation}</span>
               </div>
             </div>
           </div>

@@ -77,10 +77,10 @@ export default function VenuesView() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs">
         <div className="flex items-center gap-2 mb-1">
-          <MapPin className="w-4 h-4 text-zinc-700" />
+          <MapPin className="w-4 h-4 text-zinc-700 shrink-0" />
           <h3 className="text-sm font-semibold text-zinc-900 tracking-tight">
             Offline Venue Logistics & Commute Guide
           </h3>
@@ -90,37 +90,37 @@ export default function VenuesView() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         {venues.map((v) => (
           <div
             key={v.id}
-            className="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs flex flex-col justify-between space-y-4"
+            className="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs flex flex-col justify-between space-y-3.5"
           >
             <div>
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h4 className="font-semibold text-zinc-900 text-sm tracking-tight">
+                  <h4 className="font-semibold text-zinc-900 text-sm tracking-tight break-words">
                     {v.name}
                   </h4>
                   <span className="text-xs font-mono text-zinc-500 block mt-0.5">
                     {v.city}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200">
-                  {v.dates}
+                <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200 shrink-0">
+                  {v.dates.split('(')[0]}
                 </span>
               </div>
 
-              <p className="text-xs text-zinc-500 mt-2 font-mono">
+              <p className="text-xs text-zinc-500 mt-2 font-mono break-words">
                 {v.address}
               </p>
 
               {/* Tagged Competitions */}
-              <div className="mt-3 flex items-center gap-1.5 flex-wrap">
+              <div className="mt-2.5 flex items-center gap-1.5 flex-wrap">
                 {v.events.map((evt, idx) => (
                   <span
                     key={idx}
-                    className="text-[10px] font-medium px-2 py-0.5 rounded bg-zinc-50 border border-zinc-200 text-zinc-700"
+                    className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-zinc-50 border border-zinc-200 text-zinc-700 break-words"
                   >
                     {evt}
                   </span>
@@ -128,21 +128,21 @@ export default function VenuesView() {
               </div>
 
               {/* Transit Details */}
-              <div className="mt-4 pt-3 border-t border-zinc-100 space-y-2 text-xs">
+              <div className="mt-3.5 pt-2.5 border-t border-zinc-100 space-y-2 text-xs">
                 <div className="flex items-start gap-2 text-zinc-600">
                   <Plane className="w-3.5 h-3.5 mt-0.5 shrink-0 text-zinc-400" />
-                  <span>{v.transit.nearestAirport}</span>
+                  <span className="break-words">{v.transit.nearestAirport}</span>
                 </div>
 
                 <div className="flex items-start gap-2 text-zinc-600">
                   <Train className="w-3.5 h-3.5 mt-0.5 shrink-0 text-zinc-400" />
-                  <span>{v.transit.nearestStation}</span>
+                  <span className="break-words">{v.transit.nearestStation}</span>
                 </div>
 
                 {v.transit.metro && (
                   <div className="flex items-start gap-2 text-zinc-600">
                     <Navigation className="w-3.5 h-3.5 mt-0.5 shrink-0 text-zinc-400" />
-                    <span>{v.transit.metro}</span>
+                    <span className="break-words">{v.transit.metro}</span>
                   </div>
                 )}
               </div>
@@ -151,7 +151,7 @@ export default function VenuesView() {
             {/* Practical Tip */}
             <div className="p-2.5 rounded-lg bg-zinc-50 border border-zinc-200/60 text-[11px] text-zinc-600">
               <span className="font-semibold text-zinc-800">Note: </span>
-              {v.transit.tips}
+              <span className="break-words">{v.transit.tips}</span>
             </div>
           </div>
         ))}

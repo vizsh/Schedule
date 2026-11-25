@@ -37,7 +37,7 @@ export default function DeadlinesView({
   const getStatusBadge = (h) => {
     if (h.status === 'live_prototype') {
       return (
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           Prototype LIVE
         </span>
@@ -45,7 +45,7 @@ export default function DeadlinesView({
     }
     if (h.status === 'qualified') {
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200 shrink-0">
           <Trophy className="w-3 h-3 text-amber-600" />
           Qualified Finale
         </span>
@@ -53,39 +53,39 @@ export default function DeadlinesView({
     }
     if (h.nextDeadline && h.nextDeadline.startsWith('2026-11-30')) {
       return (
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200">
+        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200 shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
           30 Nov Due
         </span>
       );
     }
     return (
-      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-zinc-100 text-zinc-600 border border-zinc-200">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-zinc-100 text-zinc-600 border border-zinc-200 shrink-0">
         Registered
       </span>
     );
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* View & Filter Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-200/80">
-        {/* Category Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 border-b border-zinc-200/80">
+        {/* Category Pills (Touch scrollable) */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 sm:pb-0 no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0">
           <button
             onClick={() => setCategoryFilter('all')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap shrink-0 ${
               categoryFilter === 'all'
                 ? 'bg-zinc-900 text-white shadow-2xs'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70'
             }`}
           >
-            All Competitions ({hackathons.length})
+            All ({hackathons.length})
           </button>
 
           <button
             onClick={() => setCategoryFilter('super_sunday')}
-            className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               categoryFilter === 'super_sunday'
                 ? 'bg-amber-500 text-zinc-950 font-semibold shadow-2xs'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70'
@@ -97,7 +97,7 @@ export default function DeadlinesView({
 
           <button
             onClick={() => setCategoryFilter('prototype_live')}
-            className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
               categoryFilter === 'prototype_live'
                 ? 'bg-emerald-600 text-white shadow-2xs'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70'
@@ -109,7 +109,7 @@ export default function DeadlinesView({
 
           <button
             onClick={() => setCategoryFilter('qualified')}
-            className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap shrink-0 ${
               categoryFilter === 'qualified'
                 ? 'bg-amber-600 text-white shadow-2xs'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70'
@@ -120,7 +120,7 @@ export default function DeadlinesView({
 
           <button
             onClick={() => setCategoryFilter('bookmarked')}
-            className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap flex items-center gap-1 ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1 ${
               categoryFilter === 'bookmarked'
                 ? 'bg-zinc-900 text-white shadow-2xs'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200/70'
@@ -132,7 +132,7 @@ export default function DeadlinesView({
         </div>
 
         {/* View Layout Toggle: List vs Grid */}
-        <div className="flex items-center gap-1 bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 self-end sm:self-auto">
+        <div className="hidden sm:flex items-center gap-1 bg-zinc-100 p-0.5 rounded-lg border border-zinc-200 self-end sm:self-auto shrink-0">
           <button
             onClick={() => setViewMode('list')}
             className={`p-1.5 rounded-md text-xs font-medium transition cursor-pointer ${
@@ -160,7 +160,7 @@ export default function DeadlinesView({
 
       {/* Empty State */}
       {hackathons.length === 0 ? (
-        <div className="py-16 text-center border border-dashed border-zinc-300 rounded-xl bg-white">
+        <div className="py-12 sm:py-16 text-center border border-dashed border-zinc-300 rounded-xl bg-white p-4">
           <Clock className="w-8 h-8 text-zinc-400 mx-auto mb-2" />
           <h4 className="text-sm font-medium text-zinc-800">No competitions found</h4>
           <p className="text-xs text-zinc-500 mt-1">Try resetting your search query or filter.</p>
@@ -172,7 +172,7 @@ export default function DeadlinesView({
           </button>
         </div>
       ) : viewMode === 'list' ? (
-        /* Linear-Style Minimal List View */
+        /* Linear-Style Responsive List View (Mobile-Optimized Cards & Desktop Rows) */
         <div className="bg-white border border-zinc-200/80 rounded-xl overflow-hidden shadow-2xs divide-y divide-zinc-200/60">
           {hackathons.map((h) => {
             const isBookmarked = bookmarkedIds.includes(h.id);
@@ -183,18 +183,19 @@ export default function DeadlinesView({
               <motion.div
                 key={h.id}
                 whileHover={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}
-                className="group p-3.5 sm:px-5 flex flex-col md:flex-row md:items-center justify-between gap-3 cursor-pointer transition-colors"
+                className="group p-3.5 sm:px-5 flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-3 cursor-pointer transition-colors"
                 onClick={() => onSelectHackathon(h)}
               >
-                {/* Column 1: Star, Title & Organizer */}
-                <div className="flex items-start gap-3 flex-1 min-w-0">
+                {/* Top Mobile Row / Desktop Main Info */}
+                <div className="flex items-start justify-between md:justify-start gap-2.5 flex-1 min-w-0">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       onToggleBookmark(h.id);
                     }}
-                    className="mt-0.5 text-zinc-300 hover:text-amber-500 transition cursor-pointer"
+                    className="p-1 -ml-1 text-zinc-300 hover:text-amber-500 transition cursor-pointer shrink-0"
                     title={isBookmarked ? 'Unstar' : 'Star as priority'}
+                    aria-label="Star hackathon"
                   >
                     <Star
                       className={`w-4 h-4 ${
@@ -203,37 +204,45 @@ export default function DeadlinesView({
                     />
                   </button>
 
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-semibold text-zinc-900 text-sm tracking-tight group-hover:text-zinc-950 truncate">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                      <h4 className="font-semibold text-zinc-900 text-sm tracking-tight group-hover:text-zinc-950 break-words">
                         {h.title}
-                      </span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200/60">
+                      </h4>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-zinc-100 text-zinc-600 border border-zinc-200/60 shrink-0">
                         {h.platform}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5">
-                      <span>{h.organizer}</span>
+
+                    <div className="flex items-center gap-2 text-xs text-zinc-500 mt-0.5 truncate">
+                      <span className="truncate">{h.organizer}</span>
                       {h.registrationId && (
-                        <span className="hidden lg:inline text-[10px] font-mono text-zinc-400">
+                        <span className="hidden lg:inline text-[10px] font-mono text-zinc-400 shrink-0">
                           ID: {h.registrationId.slice(0, 10)}...
                         </span>
                       )}
                     </div>
                   </div>
+
+                  {/* Status badge visible on mobile top-right */}
+                  <div className="md:hidden shrink-0 mt-0.5">
+                    {getStatusBadge(h)}
+                  </div>
                 </div>
 
-                {/* Column 2: Status & Due Date */}
-                <div className="flex items-center gap-4 shrink-0 flex-wrap sm:flex-nowrap">
-                  <div>{getStatusBadge(h)}</div>
+                {/* Bottom Mobile Row / Desktop Right Columns */}
+                <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 pt-1 md:pt-0 border-t md:border-t-0 border-zinc-100 text-xs">
+                  {/* Status (desktop only) */}
+                  <div className="hidden md:block shrink-0">{getStatusBadge(h)}</div>
 
-                  <div className="text-right min-w-[130px]">
+                  {/* Deadline & relative time */}
+                  <div className="text-left md:text-right shrink-0">
                     <div className="text-xs font-semibold text-zinc-800 font-mono">
-                      {h.nextDeadlineDisplay || 'TBA'}
+                      {h.nextDeadlineDisplay ? h.nextDeadlineDisplay.split(',')[0] : 'TBA'}
                     </div>
                     {relTime && (
                       <span
-                        className={`text-[11px] font-medium ${
+                        className={`text-[11px] font-medium block ${
                           isSuperSunday
                             ? 'text-amber-700 font-semibold'
                             : 'text-zinc-400'
@@ -244,18 +253,18 @@ export default function DeadlinesView({
                     )}
                   </div>
 
-                  {/* Column 3: Prize & Venue */}
-                  <div className="text-right hidden sm:block min-w-[90px]">
+                  {/* Prize & Venue */}
+                  <div className="text-right shrink-0">
                     <span className="text-xs font-semibold text-zinc-900 font-mono block">
                       {h.prizePool}
                     </span>
-                    <span className="text-[11px] text-zinc-400 block truncate max-w-[100px]">
+                    <span className="text-[11px] text-zinc-400 block truncate max-w-[110px] sm:max-w-[140px]">
                       {h.venueCity || h.mode}
                     </span>
                   </div>
 
-                  {/* Column 4: Actions */}
-                  <div className="flex items-center gap-2 pl-2 border-l border-zinc-100">
+                  {/* Actions */}
+                  <div className="flex items-center gap-1.5 pl-2 border-l border-zinc-100 shrink-0">
                     <a
                       href={h.dashboardUrl || h.url}
                       target="_blank"
@@ -263,10 +272,11 @@ export default function DeadlinesView({
                       onClick={(e) => e.stopPropagation()}
                       className="p-1.5 text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 rounded-md transition"
                       title="Open portal"
+                      aria-label="Open portal link"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
-                    <button className="text-zinc-400 group-hover:text-zinc-700 transition">
+                    <button className="text-zinc-400 group-hover:text-zinc-700 transition hidden xs:block">
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -277,7 +287,7 @@ export default function DeadlinesView({
         </div>
       ) : (
         /* Compact Clean Cards Grid */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {hackathons.map((h) => {
             const isBookmarked = bookmarkedIds.includes(h.id);
             const relTime = getRelativeTimeTag(h.nextDeadline);
@@ -289,7 +299,7 @@ export default function DeadlinesView({
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.15 }}
                 onClick={() => onSelectHackathon(h)}
-                className={`bg-white rounded-xl border p-4.5 flex flex-col justify-between transition-all cursor-pointer shadow-2xs hover:shadow-sm ${
+                className={`bg-white rounded-xl border p-4 flex flex-col justify-between transition-all cursor-pointer shadow-2xs hover:shadow-sm ${
                   isBookmarked
                     ? 'border-zinc-300 ring-1 ring-zinc-300'
                     : isSuperSunday
@@ -299,7 +309,7 @@ export default function DeadlinesView({
               >
                 <div>
                   {/* Card Top */}
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <div className="flex items-center justify-between gap-2 mb-2">
                     <div className="flex items-center gap-1.5">
                       <span className="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200/60">
                         {h.platform}
@@ -314,7 +324,7 @@ export default function DeadlinesView({
                         e.stopPropagation();
                         onToggleBookmark(h.id);
                       }}
-                      className="text-zinc-300 hover:text-amber-500 transition cursor-pointer"
+                      className="p-1 -mr-1 text-zinc-300 hover:text-amber-500 transition cursor-pointer"
                     >
                       <Star
                         className={`w-4 h-4 ${
@@ -325,7 +335,7 @@ export default function DeadlinesView({
                   </div>
 
                   {/* Title */}
-                  <h4 className="font-semibold text-zinc-900 text-sm tracking-tight leading-snug line-clamp-1">
+                  <h4 className="font-semibold text-zinc-900 text-sm tracking-tight leading-snug line-clamp-2">
                     {h.title}
                   </h4>
                   <p className="text-xs text-zinc-500 font-medium truncate mt-0.5">
@@ -333,11 +343,11 @@ export default function DeadlinesView({
                   </p>
 
                   {/* Status Badge */}
-                  <div className="mt-3">{getStatusBadge(h)}</div>
+                  <div className="mt-2.5">{getStatusBadge(h)}</div>
                 </div>
 
                 {/* Footer details */}
-                <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between text-xs">
+                <div className="mt-3.5 pt-2.5 border-t border-zinc-100 flex items-center justify-between text-xs">
                   <div>
                     <span className="text-[10px] uppercase font-mono text-zinc-400 block">
                       Deadline

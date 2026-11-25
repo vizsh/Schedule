@@ -101,7 +101,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa] flex flex-col font-sans selection:bg-zinc-900 selection:text-white">
+    <div className="min-h-screen bg-[#fafafa] flex flex-col font-sans selection:bg-zinc-900 selection:text-white pb-16 md:pb-0">
       {/* Top Banner (Compact Alert) */}
       <TopAlertBar
         onFilterSuperSunday={handleFilterSuperSunday}
@@ -119,7 +119,7 @@ export default function App() {
       />
 
       {/* Main View Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 w-full">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8 flex-1 w-full">
         {activeTab === 'deadlines' && (
           <DeadlinesView
             hackathons={filteredHackathons}
@@ -163,9 +163,9 @@ export default function App() {
       />
 
       {/* Minimal Footer */}
-      <footer className="border-t border-zinc-200/80 bg-white py-5 text-xs text-zinc-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+      <footer className="border-t border-zinc-200/80 bg-white py-4 sm:py-5 text-xs text-zinc-500">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
             <span className="font-semibold text-zinc-800 tracking-tight">Team Outliers</span>
             <span className="text-zinc-300">•</span>
             <span>SPIT Mumbai</span>
@@ -173,10 +173,10 @@ export default function App() {
             <span className="font-mono text-[11px] text-zinc-400">SIH #127114 · GAVS #6ad0ebc2</span>
           </div>
 
-          <div className="flex items-center gap-3 text-zinc-400 text-[11px]">
-            <span>10 Competitions</span>
+          <div className="flex items-center gap-2.5 text-zinc-400 text-[11px] flex-wrap justify-center sm:justify-end">
+            <span>10 Tracked</span>
             <span>•</span>
-            <span className="font-mono font-medium text-zinc-700">₹43,70,000+ Tracked</span>
+            <span className="font-mono font-medium text-zinc-700">₹43,70,000+</span>
             <span>•</span>
             <span>Vercel Ready</span>
           </div>
